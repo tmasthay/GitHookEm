@@ -2,7 +2,7 @@ import sys
 import os
 
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
-from git_validator import GitValidator, sco
+from git_validator import GitValidator, sco, cprint
 
 
 # Subclass
@@ -13,7 +13,7 @@ class PreCommitValidator(GitValidator):
 
         if current_branch == "main":
             if name_rev != "main" and 'main_allow' not in name_rev:
-                print(
+                cprint(
                     f"Error: Branch {name_rev} is not allowed to merge into"
                     " main."
                 )
