@@ -4,6 +4,7 @@ import os
 import sys
 
 
+#Helper function for parsing cli
 def sco(s):
     try:
         return co(s).decode('utf-8').strip()
