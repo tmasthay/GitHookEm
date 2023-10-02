@@ -1,0 +1,1 @@
+/home/tyler/Documents/repos/GitHooked/git_hooks/git_validator.py
