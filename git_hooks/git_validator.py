@@ -55,7 +55,7 @@ class GitValidator(ABC):
         self._validate(*args, **kw)
 
     def _parse_sys_argv(self, argv):
-        return argv[1 : (1 + self.n_args)], dict()
+        return argv[1 : (1 + self.nargs)], dict()
 
     def parse_sys_argv(self, argv):
         if len(argv) <= self.nargs:
