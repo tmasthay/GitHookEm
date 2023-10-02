@@ -94,7 +94,7 @@ class GitValidator(ABC):
             elif os.path.exists(repo_hook_path) and os.path.islink(
                 repo_hook_path
             ):
-                if os.path.realpath(repo_hook_path) != d_abs:
+                if os.path.realpath(repo_hook_path) != hooks_dummy_path:
                     raise FileExistsError(
                         f'{repo_hook_path} exists and is incorrectly linked to'
                         f' {os.path.realpath(repo_hook_path)} instead of'
