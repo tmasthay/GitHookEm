@@ -12,6 +12,7 @@ def sco(s):
         raise
 
 
+# ignore
 class GitValidator(ABC):
     def __init__(self, nargs=1):
         self.nargs = nargs
