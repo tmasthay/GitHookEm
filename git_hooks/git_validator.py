@@ -2,6 +2,7 @@ from subprocess import check_output as co
 from abc import ABC, abstractmethod
 import os
 import sys
+from termcolor import colored
 
 
 # Helper function for parsing cli
@@ -10,6 +11,10 @@ def sco(s):
         return co(s, shell=True).decode('utf-8').strip()
     except:
         raise
+
+
+def cprint(s, color='red', **kw):
+    print(colored(s, color), **kw)
 
 
 # ignore
