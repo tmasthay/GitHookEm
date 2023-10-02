@@ -80,6 +80,8 @@ class GitValidator(ABC):
                     f'Please ensure that {repo_root} is a git repository.'
                 )
             repo_hook_path = os.path.join(repo_hook_path, repo_hook_name)
+            hooks_dummy_path = os.path.join(d_abs, f'{d}_dummy.sh')
+            py_path = os.path.join(d_abs, f'{d}.py')
             if os.path.exists(repo_hook_path) and not os.path.islink(
                 repo_hook_path
             ):
@@ -94,11 +96,12 @@ class GitValidator(ABC):
             ):
                 if os.path.realpath(repo_hook_path) != d_abs:
                     raise FileExistsError(
-                        f'{repo_hook_path} exists and is a symbolic link to'
-                        f' {os.path.realpath(repo_hook_path)}. Exiting since'
-                        ' proceeding is potentially dangerous. If you wish to'
-                        ' overwrite {repo_hook_path}, manually delete it from'
-                        ' your repo and re-run this script.'
+                        f'{repo_hook_path} exists and is incorrectly linked to'
+                        f' {os.path.realpath(repo_hook_path)} instead of'
+                        f' {hooks_dummy_path}. Exiting since proceeding is'
+                        ' potentially dangerous. If you wish to overwrite'
+                        ' {repo_hook_path}, manually delete it from your'
+                        ' repo and re-run this script.'
                     )
                 else:
                     print(
@@ -106,8 +109,6 @@ class GitValidator(ABC):
                         f' symbolically linked to {d_abs}...skipping.'
                     )
             else:
-                hooks_dummy_path = os.path.join(d_abs, f'{d}_dummy.sh')
-                py_path = os.path.join(d_abs, f'{d}.py')
                 if not os.path.exists(hooks_dummy_path):
                     file_contents = f'#!/usr/bin/bash\npython {py_path} $@'
                     print(
