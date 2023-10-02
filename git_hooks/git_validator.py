@@ -6,6 +6,7 @@ from termcolor import colored
 
 
 # Helper function for parsing cli
+# This comment should not appear in main branch
 def sco(s):
     try:
         return co(s, shell=True).decode('utf-8').strip()
