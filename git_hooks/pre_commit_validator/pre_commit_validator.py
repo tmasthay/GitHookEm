@@ -5,6 +5,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 from git_validator import GitValidator, sco
 
 
+# Subclass
 class PreCommitValidator(GitValidator):
     def base(self):
         current_branch = sco("git rev-parse --abbrev-ref HEAD")
@@ -20,4 +21,4 @@ class PreCommitValidator(GitValidator):
 
 
 if __name__ == "__main__":
-    PreCommitValidator().validate()
+    PreCommitValidator(0).validate()
