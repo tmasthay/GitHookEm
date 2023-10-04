@@ -1,6 +1,6 @@
 import os
 import sys
-from git_validator import GitValidator
+from ..git_validator import GitValidator
 
 
 class PrePushValidator(GitValidator):
