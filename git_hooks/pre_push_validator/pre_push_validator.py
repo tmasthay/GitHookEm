@@ -1,25 +1,33 @@
-import sys
 import os
+import sys
+from git_validator import GitValidator
 
-sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
-from git_validator import GitValidator, sco, cprint
 
-
-# Subclass
-class PreCommitValidator(GitValidator):
+class PrePushValidator(GitValidator):
     def base(self):
-        current_branch = sco("git rev-parse --abbrev-ref HEAD")
-        name_rev = sco("git name-rev --name-only HEAD")
+        # 1. Check with black
+        black_result = os.system("black --check .")
+        if black_result != 0:
+            print("Error: Code does not adhere to black's conventions!")
+            exit(1)
 
-        if current_branch == "main":
-            if name_rev != "main" and 'main_allow' not in name_rev:
-                print(
-                    f"Error: Branch {name_rev} is not allowed to merge into"
-                    " main...push"
-                )
-                os.system("git merge --abort")
-                sys.exit(1)
+        # 2. Check for docstrings in committed Python files
+        changed_files = os.popen("git diff --name-only").read().splitlines()
+        python_files = [f for f in changed_files if f.endswith(".py")]
+
+        for py_file in python_files:
+            with open(py_file, 'r') as f:
+                lines = f.readlines()
+                for line in lines:
+                    if "def " in line or "class " in line:
+                        next_line = lines[lines.index(line) + 1].strip()
+                        if not next_line.startswith('"""'):
+                            print(
+                                f"Error: Missing docstring in {py_file} for"
+                                f" definition: {line.strip()}"
+                            )
+                            exit(1)
 
 
 if __name__ == "__main__":
-    PreCommitValidator(0).validate()
+    PrePushValidator().validate()
