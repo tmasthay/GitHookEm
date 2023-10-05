@@ -12,11 +12,13 @@ class PrePushValidator(GitValidator):
             exit(1)
 
         # 2. Check for docstrings in committed Python files
-        changed_files = os.popen("git diff --name-only").read().splitlines()
+        changed_files = (
+            os.popen("git diff --staged --name-only").read().splitlines()
+        )
         python_files = [f for f in changed_files if f.endswith(".py")]
 
         for py_file in python_files:
-            with open(py_file, 'r') as f:
+            with open(py_file, "r") as f:
                 lines = f.readlines()
                 for line in lines:
                     if "def " in line or "class " in line:
@@ -30,4 +32,4 @@ class PrePushValidator(GitValidator):
 
 
 if __name__ == "__main__":
-    PrePushValidator().validate()
+    PrePushValidator(0).validate()
