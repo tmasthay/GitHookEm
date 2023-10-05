@@ -16,6 +16,7 @@ class PrePushValidator(GitValidator):
             os.popen("git diff --staged --name-only").read().splitlines()
         )
         input(os.getcwd())
+        print('yo')
         python_files = [f for f in changed_files if f.endswith(".py")]
 
         for py_file in python_files:
