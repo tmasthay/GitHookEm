@@ -2,6 +2,26 @@
 
 GitHooked is a Python-based tool designed to enforce and streamline git practices for code repositories. By setting up this tool in your git project, you can ensure consistent commit message conventions and code quality checks before pushes.
 
+##Setup
+To get setup
+```bash
+git clone https://github.com/tmasthay/GitHooked.git
+cd GitHooked
+pip install requirements.txt
+```
+To setup the hooks of your cloned repo in respositories `foo` and `bar` with absolute paths `foo_path` and `bar_path`, run
+```bash
+cd /path/to/clone/of/GitHooked
+python git_validator.py foo_path
+python git_validator.py bar_path
+```
+What this will do is setup **symbolic links to the cloned repo** in the appropriate path that git is expecting to look for hooks. 
+The beauty of this is that now you can extend my repo to customize your own hooks within `/path/to/clone/of/GitHooked` and you now have automatically synced all your repos
+to your hook repos. 
+I have implemented a few hooks for commit message validation and for pre-push validation as examples.
+They are designed to be extensible, as they are both concretization of the abstract class `GitValidator`. 
+NOTE: PATH NAMES ARE IMPORTANT! For hook X-Y, its implementation must be stored in X_Y_validator! If you really hate this convention enough, modify the static method `make_symbolic_links` within the `GitValidator` class.
+
 ## Components
 
 ### Git Validator (`git_validator.py`):
@@ -19,30 +39,3 @@ GitHooked is a Python-based tool designed to enforce and streamline git practice
 
 - Validates code with `black` for Python formatting conventions.
 - Ensures that functions and classes have docstrings in committed Python files.
-
-## Usage
-
-### Setting up Git Validator
-
-1. Navigate to your repository root.
-2. Run the `git_validator.py` script, providing your repository root as an argument.
-   ```bash
-   python git_validator.py <path_to_repo_root>
-   ```
-
-### Commit Message Validator
-
-1. When you commit, the `commit_msg_validator.py` script will automatically validate your commit message against the defined conventions.
-
-### Pre-Push Validator
-
-1. Before pushing, the `pre_push_validator.py` script will validate your code using `black` and check for the presence of docstrings in your Python files.
-
-## Notes
-
-- Ensure you have the required packages installed, including `termcolor` and other dependencies mentioned in the scripts.
-- This project uses abstract base classes; ensure you are familiar with them when extending or modifying the base validators.
-
-## Contributing
-
-Contributions are welcome! Please follow the conventions defined in the `commit_msg_validator` when making commit messages.
