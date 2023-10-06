@@ -2,7 +2,7 @@
 
 GitHooked is a Python-based tool designed to enforce and streamline git practices for code repositories. By setting up this tool in your git project, you can ensure consistent commit message conventions and code quality checks before pushes.
 
-##Setup
+## Setup
 To get setup
 ```bash
 git clone https://github.com/tmasthay/GitHooked.git
@@ -16,11 +16,16 @@ python git_validator.py foo_path
 python git_validator.py bar_path
 ```
 What this will do is setup **symbolic links to the cloned repo** in the appropriate path that git is expecting to look for hooks. 
+
 The beauty of this is that now you can extend my repo to customize your own hooks within `/path/to/clone/of/GitHooked` and you now have automatically synced all your repos
 to your hook repos. 
+
 I have implemented a few hooks for commit message validation and for pre-push validation as examples.
+
 They are designed to be extensible, as they are both concretization of the abstract class `GitValidator`. 
-NOTE: PATH NAMES ARE IMPORTANT! For hook X-Y, its implementation must be stored in X_Y_validator! If you really hate this convention enough, modify the static method `make_symbolic_links` within the `GitValidator` class.
+
+**NOTE: PATH NAMES ARE IMPORTANT!**
+For hook x-y, its implementation must be stored in x_y_validator! If you really hate this convention enough, modify the static method `make_symbolic_links` within the `GitValidator` class.
 
 ## Components
 
@@ -38,4 +43,4 @@ NOTE: PATH NAMES ARE IMPORTANT! For hook X-Y, its implementation must be stored 
 ### Pre-Push Validator (`pre_push_validator.py`):
 
 - Validates code with `black` for Python formatting conventions.
-- Ensures that functions and classes have docstrings in committed Python files.
+- Ensures that functions and classes have docstrings in committed Python files (currently has bugs).
