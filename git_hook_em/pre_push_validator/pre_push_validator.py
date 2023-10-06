@@ -1,6 +1,6 @@
 import os
 import sys
-from git_hooked.git_validator import GitValidator
+from git_hook_em.git_validator import GitValidator
 from masthay_helpers.global_helpers import iprint
 
 
