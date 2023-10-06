@@ -8,7 +8,10 @@ To get setup
 git clone https://github.com/tmasthay/GitHookEm.git
 cd GitHookEm
 pip install requirements.txt
+(cd ..; pip install .)
 ```
+The parentheses are currently **necessary**, but it's a hack to get around a bug; it will be removed in future.
+
 To setup the hooks of your cloned repo in respositories `foo` and `bar` with absolute paths `foo_path` and `bar_path`, run
 ```bash
 cd /path/to/clone/of/GitHookEm
