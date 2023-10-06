@@ -1,4 +1,4 @@
-# GitHooked
+# GitHookEm
 
 GitHooked is a Python-based tool designed to enforce and streamline git practices for code repositories. By setting up this tool in your git project, you can ensure consistent commit message conventions and code quality checks before pushes.
 
