@@ -25,19 +25,31 @@ class CommitMsgValidator(GitValidator):
             "DEPRECATE": "Deprecated feature/code",
             "UPDATE": "General update",
             "PERFORMANCE": "Performance optimization",
-            "PERF": "Performance change",
+            "PERF": "Same as PERFORMANCE",
             "DROP": "Dropped code/feature",
             "REQUEST": "Request-based change",
-            "FOLLOW": "Follow-up to previous commit",
+            "EMPTY_FOLLOW": "Follow-up to previous commit to provide more info",
             "REMOVE": "Removed code, feature or file",
             "RM": "Removed code, feature or file",
+            "BUGRESURFACED": (
+                "Bug resurfaced, implies previous BUGFIX insufficient"
+            ),
+            "BUGSURF": "Same as BUGRESURFACED",
+            "BUGAGAIN": "Same as BUGRESURFACED",
+            "MERGE": "Commit involving a merge operation",
             "PAUSE_BUG": "Pausing due to a bug",
             "PAUSE_DOCS": "Pausing doc changes",
             "PAUSE_FEATURE": "Pausing feature work",
             "PAUSE_PERF": "Pausing performance work",
             "PAUSE_OVERKILL": "Pausing due to overkill",
             "PAUSE_DESIGN": "Pausing for design reasons",
-            "BUGREV": "Reverted bugfix; bug found again",
+            "EMPTY_NOTE": (
+                "Empty commit -- should only be used for important notes"
+            ),
+            "WAIT_MERGE": (
+                "Next commit should be merge, please specify sub-branch in"
+                " commit message"
+            ),
         }
 
         # Extract directive names

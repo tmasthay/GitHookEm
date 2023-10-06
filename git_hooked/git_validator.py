@@ -22,6 +22,11 @@ def cprint(s, color="red", **kw):
 class GitValidator(ABC):
     def __init__(self, nargs=1):
         self.nargs = nargs
+        self.root = GitValidator.get_root()
+
+    @staticmethod
+    def get_root():
+        return sco("git rev-parse --show-toplevel")
 
     @abstractmethod
     def base(self, *args, **kw):
@@ -89,14 +94,18 @@ class GitValidator(ABC):
             repo_hook_path = os.path.join(repo_hook_path, repo_hook_name)
             hooks_dummy_path = os.path.join(d_abs, f"{d}_dummy.sh")
             py_path = os.path.join(d_abs, f"{d}.py")
-            if os.path.exists(repo_hook_path) and not os.path.islink(repo_hook_path):
+            if os.path.exists(repo_hook_path) and not os.path.islink(
+                repo_hook_path
+            ):
                 raise FileExistsError(
                     f"{repo_hook_path} exists and is not a symbolic link."
                     " Exiting since proceeding is potentially dangerous. If"
                     f" you wish to overwrite {repo_hook_path}, manually delete"
                     " it from your repo and re-run this script."
                 )
-            elif os.path.exists(repo_hook_path) and os.path.islink(repo_hook_path):
+            elif os.path.exists(repo_hook_path) and os.path.islink(
+                repo_hook_path
+            ):
                 if os.path.realpath(repo_hook_path) != hooks_dummy_path:
                     raise FileExistsError(
                         f"{repo_hook_path} exists and is incorrectly linked to"

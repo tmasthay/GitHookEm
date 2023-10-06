@@ -1,2 +1,2 @@
-masthay_helpers>=0.0.21
+masthay_helpers>=0.2.27
 termcolor

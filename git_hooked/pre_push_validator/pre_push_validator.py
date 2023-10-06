@@ -1,14 +1,19 @@
 import os
 import sys
 from git_hooked.git_validator import GitValidator
+from masthay_helpers.global_helpers import iprint
 
 
 class PrePushValidator(GitValidator):
     def base(self):
         # 1. Check with black
-        black_result = os.system("black -l 80 --check .")
+        black_result = os.system(f"black -l 80 --check {self.root}")
         if black_result != 0:
-            print("Error: Code does not adhere to black's conventions!")
+            iprint(
+                "Error: Code does not adhere to black's conventions!\n",
+                f"Run 'black {self.root}' and try again.",
+            )
+
             exit(1)
 
         # 2. Check for docstrings in committed Python files
