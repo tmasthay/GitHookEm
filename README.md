@@ -10,8 +10,8 @@ cd GitHookEm
 pip install requirements.txt
 (cd ..; pip install .)
 ```
-The parentheses are currently **necessary**, but it's a hack I currently have due to a relative import issue that I am currently having. 
-In theory, a slight modification from "python X.py" -> "python -m Y X.py" should do the trick, but I haven't fixed it yet. 
+The parentheses are currently **necessary**, but it's a hack to get around a bug; it will be removed in future.
+
 To setup the hooks of your cloned repo in respositories `foo` and `bar` with absolute paths `foo_path` and `bar_path`, run
 ```bash
 cd /path/to/clone/of/GitHookEm
