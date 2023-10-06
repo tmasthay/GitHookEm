@@ -1,23 +1,23 @@
 # GitHookEm
 
-GitHooked is a Python-based tool designed to enforce and streamline git practices for code repositories. By setting up this tool in your git project, you can ensure consistent commit message conventions and code quality checks before pushes.
+GitHookEm is a Python-based tool designed to enforce and streamline git practices for code repositories. By setting up this tool in your git project, you can ensure consistent commit message conventions and code quality checks before pushes.
 
 ## Setup
 To get setup
 ```bash
-git clone https://github.com/tmasthay/GitHooked.git
-cd GitHooked
+git clone https://github.com/tmasthay/GitHookEm.git
+cd GitHookEm
 pip install requirements.txt
 ```
 To setup the hooks of your cloned repo in respositories `foo` and `bar` with absolute paths `foo_path` and `bar_path`, run
 ```bash
-cd /path/to/clone/of/GitHooked
+cd /path/to/clone/of/GitHookEm
 python git_validator.py foo_path
 python git_validator.py bar_path
 ```
 What this will do is setup **symbolic links to the cloned repo** in the appropriate path that git is expecting to look for hooks. 
 
-The beauty of this is that now you can extend my repo to customize your own hooks within `/path/to/clone/of/GitHooked` and you now have automatically synced all your repos
+The beauty of this is that now you can extend my repo to customize your own hooks within `/path/to/clone/of/GitHookEm` and you now have automatically synced all your repos
 to your hook repos. 
 
 I have implemented a few hooks for commit message validation and for pre-push validation as examples.
