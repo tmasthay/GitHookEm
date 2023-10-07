@@ -24,7 +24,7 @@ setup(
         "License :: OSI Approved :: MIT License",  # or any other license you're using
         "Operating System :: OS Independent",
     ],
-    python_requires='>=3.6',  # or the minimum version you support
+    python_requires=">=3.6",  # or the minimum version you support
     install_requires=requirements,
-    scripts=['update_imports.py'],
+    scripts=["update_imports.py"],
 )

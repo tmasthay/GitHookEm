@@ -6,7 +6,7 @@ from masthay_helpers.global_helpers import iprint
 
 class PrePushValidator(GitValidator):
     def base(self):
-        black_cmd = 'black -l 80'
+        black_cmd = "black -l 80"
         # 1. Check with black
         black_result = os.system(f"{black_cmd} --check {self.root}")
         if black_result != 0:
