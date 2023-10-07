@@ -9,10 +9,8 @@ class PreCommitValidator(GitValidator):
     def base(self):
         black_cmd = f"black -l 80 {self.root}"
 
-        print(black_cmd)
         # 1. Run black to reformat code
         os.system(black_cmd)
-        print("end black_cmd")
 
         # 2. Identify all files that were changed by black
         changed_files_output = os.popen("git diff --name-only").read().strip()
@@ -31,6 +29,7 @@ class PreCommitValidator(GitValidator):
         for file in changed_files:
             if file in tracked_files:
                 os.system(f"git add {file}")
+                print(f"Added {file} to staging area during pre-commit.")
 
 
 if __name__ == "__main__":
