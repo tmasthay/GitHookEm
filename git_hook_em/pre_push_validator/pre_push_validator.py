@@ -23,7 +23,6 @@ class PrePushValidator(GitValidator):
         )
         python_files = [f for f in changed_files if f.endswith(".py")]
 
-        input(os.getcwd())
         for py_file in python_files:
             with open(py_file, "r") as f:
                 lines = f.readlines()
