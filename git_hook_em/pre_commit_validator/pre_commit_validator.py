@@ -31,6 +31,14 @@ class PreCommitValidator(GitValidator):
                 os.system(f"git add {file}")
                 print(f"Added {file} to staging area during pre-commit.")
 
+        tracked_files_again = os.popen('git ls-files').read().strip()
+        ban = 'super_secret'
+        for file in tracked_files_again:
+            file = file.lower()
+            ban2 = ban.replace('_', '')
+            if( ban in file or ban2 in file ):
+                cprint(f'Now tracking "{file}" which has "{ban}" or "{ban2}" as a substring! Commit FAILED!')
+                exit(-1)
 
 if __name__ == "__main__":
     PreCommitValidator(0).validate()
