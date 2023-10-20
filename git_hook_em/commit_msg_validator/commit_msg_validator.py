@@ -50,6 +50,9 @@ class CommitMsgValidator(GitValidator):
                 "Next commit should be merge, please specify sub-branch in"
                 " commit message"
             ),
+            "READY_MERGE": (
+                "Next operation should be merge to WAIT_MERGE waiting branch"
+            ),
         }
 
         # Extract directive names
