@@ -7,7 +7,7 @@ from git_validator import GitValidator
 
 class PreCommitValidator(GitValidator):
     def base(self):
-        black_cmd = f"black -l 80 {self.root}"
+        black_cmd = f"black -l 80 -S {self.root}"
 
         # 1. Run black to reformat code
         os.system(black_cmd)
