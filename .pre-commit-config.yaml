@@ -3,4 +3,5 @@ repos:
     rev: refactor/destroy  # The git hash or tag you want to use
     hooks:
       - id: commit-msg-directive
+      - id: ban-super-secret
 

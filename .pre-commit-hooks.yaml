@@ -3,3 +3,9 @@
   entry: python git_hook_em/commit_msg_validator/commit_msg_validator.py
   language: python
   stages: [commit-msg]
+
+- id: ban-super-secret
+  name: Ban Super Secret
+  entry: python git_hook_em/pre_commit_validator/ban_super_secret.py
+  language: python
+  stages: [pre-commit]
