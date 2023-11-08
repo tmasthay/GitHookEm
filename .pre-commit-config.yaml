@@ -26,11 +26,11 @@ repos:
       - id: check-xml
       - id: detect-private-key
 
-  # - repo: https://github.com/pycqa/isort
-  #   rev: 5.9.3  # Replace with the specific version you want to pin
-  #   hooks:
-  #     - id: isort
-  #       args: ["--profile", "black"]
+  - repo: https://github.com/pycqa/isort
+    rev: 5.12.0  # Replace with the specific version you want to pin
+    hooks:
+      - id: isort
+        args: ["--profile", "black"]
 
   - repo: https://github.com/pycqa/flake8
     rev: 3.9.2  # Replace with the specific version you want to pin
