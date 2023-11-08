@@ -2,6 +2,5 @@ repos:
   - repo: https://github.com/tmasthay/GitHookEm
     rev: refactor/destroy  # The git hash or tag you want to use
     hooks:
-      - id: hello-world-commit-msg
-      - id: real-commit-msg
+      - id: commit-msg-directive
 

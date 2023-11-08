@@ -1,7 +1,0 @@
-#!/bin/bash
-
-REPO_PATH=$(cat repo_path.cfg)
-
-#source the commit-msg-checker.sh script, which calls main py file
-python "$REPO_PATH/git-hooks/commit-msg-checker.py" "$1"
-
