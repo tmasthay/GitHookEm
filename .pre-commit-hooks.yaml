@@ -1,0 +1,5 @@
+- id: hello-world-commit-msg
+  name: Hello World Commit Message Hook
+  entry: python git_hook_em/hello.py
+  language: python
+  stages: [commit-msg]
