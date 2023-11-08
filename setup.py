@@ -1,4 +1,4 @@
-from setuptools import setup, find_packages
+from setuptools import find_packages, setup
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
@@ -13,18 +13,27 @@ setup(
     name="GitHookEm",
     version="0.1.0",
     author="Tyler",
-    author_email="tyler@example.com",  # replace with your email
+    author_email="tyler@example.com",
     description="A package for git hooks",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/tmasthay/GitHookEm",  # replace with your repo URL
-    packages=find_packages(),  # This will find packages automatically
+    url="https://github.com/tmasthay/GitHookEm",
+    packages=find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: MIT License",  # or any other license you're using
+        "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    python_requires=">=3.6",  # or the minimum version you support
+    python_requires=">=3.6",
     install_requires=requirements,
     scripts=["update_imports.py"],
+    entry_points={
+        'console_scripts': [
+            (
+                'commit-msg-directives='
+                'git_hook_em.commit_msg_validator.commit_msg_validator:main'
+            ),
+            'ban-super-secret=git_hook_em.pre_commit_validator:main',
+        ]
+    },
 )

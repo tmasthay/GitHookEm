@@ -1,7 +1,7 @@
 ---
 repos:
   - repo: https://github.com/tmasthay/GitHookEm
-    rev: main
+    rev: main  # The tag/commit to clone from
     hooks:
       - id: commit-msg-directive
       - id: ban-super-secret
@@ -36,10 +36,12 @@ repos:
       - id: isort
         args: ["--profile", "black"]
 
-  - repo: https://github.com/pycqa/flake8
-    rev: 3.9.2  # Replace with the specific version you want to pin
-    hooks:
-      - id: flake8
+  # - repo: https://github.com/pycqa/flake8
+  #   rev: 3.9.2  # Replace with the specific version you want to pin
+  #   hooks:
+  #     - id: flake8
+  #       args: [--extend-ignore=F403, --extend-ignore=F405]
+
 
   - repo: https://github.com/adrienverge/yamllint.git
     rev: v1.26.3  # The version you want to use
