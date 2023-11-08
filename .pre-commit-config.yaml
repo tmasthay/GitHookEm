@@ -1,3 +1,4 @@
+---
 repos:
   - repo: https://github.com/tmasthay/GitHookEm
     rev: main
@@ -9,7 +10,10 @@ repos:
     rev: 23.9.1  # Replace with the specific version you want to pin
     hooks:
       - id: black
-        args: [--line-length=80, --skip-string-normalization, --experimental-string-processing]
+        args:
+          - --line-length=80
+          - --skip-string-normalization
+          - --experimental-string-processing
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.5.0  # Always check for the latest version
@@ -36,3 +40,9 @@ repos:
     rev: 3.9.2  # Replace with the specific version you want to pin
     hooks:
       - id: flake8
+
+  - repo: https://github.com/adrienverge/yamllint.git
+    rev: v1.26.3  # The version you want to use
+    hooks:
+      - id: yamllint
+        args: ['--format=auto', '--strict']
