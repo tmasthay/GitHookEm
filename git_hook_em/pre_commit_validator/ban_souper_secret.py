@@ -10,7 +10,6 @@ class BanSuperSecret(GitValidator):
         tracked_files = os.popen("git ls-files").read().strip()
         ban = "super_secret"
         for file in tracked_files:
-            input(file)
             file = file.lower()
             ban2 = ban.replace("_", "")
             if ban in file or ban2 in file:
