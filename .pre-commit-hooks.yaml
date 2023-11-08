@@ -1,3 +1,4 @@
+---
 - id: commit-msg-directive
   name: Commit Message Directive Hook
   entry: python git_hook_em/commit_msg_validator/commit_msg_validator.py
