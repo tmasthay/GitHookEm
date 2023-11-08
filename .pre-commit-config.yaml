@@ -1,6 +1,6 @@
 repos:
   - repo: https://github.com/tmasthay/GitHookEm
-    rev: a2bc0ac01ff6ed2b927f806c8050799ced42ab8e  # The git hash or tag you want to use
+    rev: d4968a24428ba08223f15a15263743cc0f701893  # The git hash or tag you want to use
     hooks:
       - id: hello-world-commit-msg
 
