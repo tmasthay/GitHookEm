@@ -6,6 +6,6 @@
 
 - id: ban-super-secret
   name: Ban Super Secret
-  entry: python git_hook_em/pre_commit_validator/ban_super_secret.py
+  entry: python git_hook_em/pre_commit_validator/ban_souper_secret.py
   language: python
   stages: [pre-commit]
