@@ -1,10 +1,11 @@
--   id: commit-msg-directives
+-   id: commit-msg-directive
     name: Commit Message Directive Hook
-    entry: commit-msg-directives
-    language: script
-    types: [text]
+    entry: commit-msg-directive
+    language: system
+    stages: [commit-msg]
+
 -   id: ban-super-secret
     name: Ban Super Secret
     entry: ban-super-secret
-    language: script
-    types: [text]
+    language: system
+    stages: [pre-commit]
