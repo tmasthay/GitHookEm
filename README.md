@@ -1,49 +1,52 @@
 # GitHookEm
 
-GitHookEm is a Python-based tool designed to enforce and streamline git practices for code repositories. By setting up this tool in your git project, you can ensure consistent commit message conventions and code quality checks before pushes.
+GitHookEm is a Python-based tool designed to be a starter kit for making your own custom hooks. 
 
-## Setup
-To get setup
+## Setup YAML files
+To use my hooks, just add the following to your .pre-commit-config.yaml file at `REPO_PATH`
 ```bash
-git clone https://github.com/tmasthay/GitHookEm.git
-cd GitHookEm
-pip install requirements.txt
-(cd ..; pip install .)
+repos:
+    - repo: https://github.com/tmasthay/GitHookEm
+      rev: main  # The tag/commit to clone from
+      hooks:
+        - id: HOOK_EM_ID_1
+        - id: HOOK_EM_ID_2
+      .
+      .
+      .
+      REST OF YAML FILE
 ```
-The parentheses are currently **necessary**, but it's a hack to get around a bug; it will be removed in future.
+Currently support `GitHookEm` ids are below.
+| id | Description          | See for reference |
+|----|----------------------| -------------- | 
+| commit-msg-directives | Force ALL_CAPS directives at beginning of commit messages, similar to `commitizen`.  | `git_hook_em.commit_msg.directives.main()`
+| ban-super-secret | Check for file with `super_secret` as a substring, in case `.gitignore` error occurred. | `git_hook_em.pre_commit.ban_souper_secret.main()`
 
-To setup the hooks of your cloned repo in respositories `foo` and `bar` with absolute paths `foo_path` and `bar_path`, run
+## Setup pre-commit
+GitHookEm uses `pre-commit`, which is straightforward to setup. Directions are below.
+
 ```bash
-cd /path/to/clone/of/GitHookEm
-python git_validator.py foo_path
-python git_validator.py bar_path
+pip install pre-commit
+cd path_to_your_repo
+pre-commit install
 ```
-What this will do is setup **symbolic links to the cloned repo** in the appropriate path that git is expecting to look for hooks. 
+Now try `git commit --allow-empty` and see how it works! Email me at tyler@oden.utexas.edu if you need help setting up!
 
-The beauty of this is that now you can extend my repo to customize your own hooks within `/path/to/clone/of/GitHookEm` and you now have automatically synced all your repos
-to your hook repos. 
+## Other suggested hooks
+There are a lot of hooks on GitHub already out there that are easy to plugin once you are setup.
 
-I have implemented a few hooks for commit message validation and for pre-push validation as examples.
+Try to avoid making custom hooks unless you absolutely **need** to; it just saves time and headaches.
 
-They are designed to be extensible, as they are both concretization of the abstract class `GitValidator`. 
+See my [.pre-commit-config.yaml file](https://github.com/tmasthay/GitHookEm/blob/main/.pre-commit-config.yaml) for a starter kit. 
 
-**NOTE: PATH NAMES ARE IMPORTANT!**
-For hook x-y, its implementation must be stored in x_y_validator! If you really hate this convention enough, modify the static method `make_symbolic_links` within the `GitValidator` class.
+Below is a table briefly describing the hooks external to this repo.  
 
-## Components
+| Name | Description | Github page |
+| ------- | ------------------------ | ------------------------- |
+| black | Opinionated Python style formatter | [black GitHub](https://github.com/psf/black) |
+| pre-commit | Framework for managing git hooks | [pre-commit GitHub](https://github.com/pre-commit/pre-commit) and [pre-commit hooks](https://github.com/pre-commit/pre-commit-hooks) |
+| isort | Sorts Python imports alphabetically | [isort GitHub](https://github.com/pycqa/isort) |
+| flake8 | Python linter and style guide | [flake8 GitHub](https://github.com/pycqa/flake8) |
+| yamllint | YAML linter | [yamllint GitHub](https://github.com/adrienverge/yamllint.git) |
 
-### Git Validator (`git_validator.py`):
 
-- Provides a base class `GitValidator` for creating custom git hook validators.
-- Contains helper functions for parsing command-line input and symbolic link creation for hooks.
-- When run as a main script, it sets up symbolic links for all git hooks present in the repository.
-
-### Commit Message Validator (`commit_msg_validator.py`):
-
-- Ensures commit messages follow specific formats and conventions.
-- Commit messages should start with predefined directives followed by a description. Some of the supported directives include `BUG`, `FEATURE`, `DEBUG`, and more.
-
-### Pre-Push Validator (`pre_push_validator.py`):
-
-- Validates code with `black` for Python formatting conventions.
-- Ensures that functions and classes have docstrings in committed Python files (currently has bugs).
