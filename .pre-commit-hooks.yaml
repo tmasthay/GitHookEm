@@ -1,4 +1,4 @@
--   id: commit-msg-directive
+-   id: commit-msg-directives
     name: Commit Message Directive Hook
     entry: commit-msg-directives
     language: script
