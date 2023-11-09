@@ -1,4 +1,5 @@
 # GitHookEm
+![Git Hook Em Banner](hook_em.jpg)
 
 GitHookEm is a Python-based tool designed to be a starter kit for making your own custom hooks. 
 
