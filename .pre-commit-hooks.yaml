@@ -1,6 +1,10 @@
-- id: dummy-hook
-  name: Dummy Hook
-  description: This hook does nothing.
-  entry: echo "no hooks defined locally"
-  language: system
-  stages: [commit]
+-   id: commit-msg-directive
+    name: Commit Message Directive Hook
+    entry: commit-msg-directives
+    language: script
+    types: [text]
+-   id: ban-super-secret
+    name: Ban Super Secret
+    entry: ban-super-secret
+    language: script
+    types: [text]
