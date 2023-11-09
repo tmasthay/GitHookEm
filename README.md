@@ -9,7 +9,7 @@ repos:
     - repo: https://github.com/tmasthay/GitHookEm
       rev: main  # The tag/commit to clone from
       hooks:
-        - id: HOOK_EM_ID_1
+        - id: commit-msg-directives
         - id: HOOK_EM_ID_2
       .
       .
