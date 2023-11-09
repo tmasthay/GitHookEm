@@ -1,0 +1,6 @@
+- id: dummy-hook
+  name: Dummy Hook
+  description: This hook does nothing.
+  entry: echo "no hooks defined locally"
+  language: system
+  stages: [commit]
