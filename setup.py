@@ -9,6 +9,14 @@ with open("requirements.txt", "r") as fh:
         line.strip() for line in fh if line.strip() and not line.startswith("#")
     ]
 
+directives = {
+    'commit-msg-directives': 'git_hook_em.commit_msg.directives:main',
+    'ban-super-secret': 'git_hook_em.pre_commit.ban_souper_secret:main',
+}
+entry_points = {
+    'console_scripts': [k + ' = ' + v for k, v in directives.items()]
+}
+
 setup(
     name="GitHookEm",
     version="0.1.0",
@@ -27,13 +35,5 @@ setup(
     python_requires=">=3.6",
     install_requires=requirements,
     scripts=["update_imports.py"],
-    entry_points={
-        'console_scripts': [
-            (
-                'commit-msg-directives='
-                'git_hook_em.commit_msg_validator.commit_msg_validator:main'
-            ),
-            'ban-super-secret=git_hook_em.pre_commit_validator:main',
-        ]
-    },
+    entry_points=entry_points,
 )

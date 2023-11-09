@@ -1,6 +1,6 @@
+import os
 import re
 import sys
-import os
 
 sys.path.append(os.path.abspath(os.path.join(__file__, '../..')))
 from git_validator import GitValidator
@@ -87,5 +87,9 @@ class CommitMsgValidator(GitValidator):
             exit(1)
 
 
-if __name__ == "__main__":
+def main():
     CommitMsgValidator().validate()
+
+
+if __name__ == "__main__":
+    main()

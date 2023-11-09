@@ -20,5 +20,9 @@ class BanSuperSecret(GitValidator):
                 exit(-1)
 
 
-if __name__ == "__main__":
+def main():
     BanSuperSecret(0).validate()
+
+
+if __name__ == "__main__":
+    main()
