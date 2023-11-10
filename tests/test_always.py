@@ -1,2 +1,2 @@
 def test_nothing():
-    return True
+    assert False

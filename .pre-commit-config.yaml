@@ -3,12 +3,11 @@ repos:
   - repo: local
     hooks:
       - id: pytest
-        name: pytest
+        name: Run pytest
         entry: pytest
         language: system
-        types: [python]
-        pass_filenames: false
         stages: [push]
+        always_run: true
 
   - repo: https://github.com/tmasthay/GitHookEm
     rev: main  # The tag/commit to clone from
