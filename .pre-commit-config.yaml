@@ -1,5 +1,15 @@
 ---
 repos:
+  - repo: local
+    hooks:
+      - id: pytest
+        name: pytest
+        entry: pytest
+        language: system
+        types: [python]
+        pass_filenames: false
+        stages: [push]
+
   - repo: https://github.com/tmasthay/GitHookEm
     rev: main  # The tag/commit to clone from
     hooks:
