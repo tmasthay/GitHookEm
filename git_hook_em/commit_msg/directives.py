@@ -63,6 +63,13 @@ class CommitMsgValidator(GitValidator):
             ),
             "REFACTOR_WORKS": "Still works",
             "REFACTOR_BREAK": "Doesn't work",
+            "REFACTOR_DOUBT": (
+                "Not sure if works -- should go back and check -- amend message"
+                " when sure"
+            ),
+            "RWORKS": "Same as REFACTOR_WORKS",
+            "RBREAK": "Same as REFACTOR_BREAK",
+            "RDOUBT": "Same as REFACTOR_DOUBT",
         }
 
         # Extract directive names
