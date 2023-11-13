@@ -53,6 +53,14 @@ class CommitMsgValidator(GitValidator):
             "READY_MERGE": (
                 "Next operation should be merge to WAIT_MERGE waiting branch"
             ),
+            "CKPT": "Same as REFACTOR_CKPT",
+            "CHECKPOINT": "Same as REFACTOR_CKPT",
+            "MILESTONE": (
+                "Milestone commit -- think as 'good, significant checkpoints'"
+            ),
+            "FALLBACK": (
+                "Fallback commit -- think as 'milestone set for safety'"
+            ),
         }
 
         # Extract directive names
