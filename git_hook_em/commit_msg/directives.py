@@ -61,6 +61,8 @@ class CommitMsgValidator(GitValidator):
             "FALLBACK": (
                 "Fallback commit -- think as 'milestone set for safety'"
             ),
+            "REFACTOR_WORKS": "Still works",
+            "REFACTOR_BREAK": "Doesn't work",
         }
 
         # Extract directive names
