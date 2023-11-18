@@ -42,7 +42,7 @@ verbosity = 2
 
 # Set the extra-path where gitlint will search for user defined rules
 # See http://jorisroovers.github.io/gitlint/user_defined_rules for details
-extra-path=git_hook_em/gitlint_rules
+extra-path=git_hook_em/.gitlint_rules
 
 # This is an example of how to configure the "title-max-length" rule and
 # set the line-length it enforces to 50
