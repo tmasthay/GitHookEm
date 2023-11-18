@@ -28,8 +28,8 @@ repos:
     - repo: https://github.com/tmasthay/GitHookEm
       rev: main  # The tag/commit to clone from
       hooks:
-        - id: commit-msg-directives
-        - id: HOOK_EM_ID_2
+        - id: ban-super-secret
+        - id: HOOK_ID_2
       .
       .
       .
