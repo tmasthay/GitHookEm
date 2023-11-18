@@ -1,0 +1,2 @@
+[general]
+extra-path=git_hook_em/gitlint_rules/directives.py
