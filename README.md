@@ -20,7 +20,7 @@ repos:
 Currently support `GitHookEm` ids are below.
 | id | Description          | See for reference |
 |----|----------------------| -------------- | 
-| commit-msg-directives | Force ALL_CAPS directives at beginning of commit messages, similar to `commitizen`.  | [directives.py](https://github.com/tmasthay/GitHookEm/blob/main/git_hook_em/commit_msg/directives.py) |
+| commit-msg-directives | Force ALL_CAPS directives at beginning of commit messages, similar to `commitizen`.  | [directives.py](https://github.com/tmasthay/GitHookEm/tree/main/.gitlint_rules) |
 | ban-super-secret | Check for file with `super_secret` as a substring, in case `.gitignore` error occurred. | [ban_souper_secret.py](https://github.com/tmasthay/GitHookEm/blob/main/git_hook_em/pre_commit/ban_souper_secret.py) |
 
 ## Setup pre-commit
