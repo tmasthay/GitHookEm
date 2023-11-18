@@ -31,8 +31,8 @@ class Directive:
 
 def get_directives():
     return {
-        'BUG': Directive('Found bug', aliases=['RESURFACED', 'AGAIN']),
-        'BUGFIX': Directive('Fixed bug'),
+        'BUG': Directive('Found bug', sub=['RESURFACED', 'AGAIN']),
+        'FIX': Directive('Fixed bug'),
         'FEATURE': Directive('Added feature'),
         'DEBUG': Directive('Debugging change'),
         'CLEAN': Directive('Cleaned code'),
@@ -97,9 +97,10 @@ class DirectiveCommitRule(CommitRule):
 
         if not re.match(pattern, commit.message.full):
             violation_msg = (
-                "Commit message does not follow the required format."
-                " Use one of the following directives: "
-                + ", ".join(self.directives.keys())
+                f"Commit message '{commit.message.full}' does not follow the"
+                " required format. Use one of the following directives: "
+                + "\n    "
+                + "\n    ".join(directive_names)
             )
             return [RuleViolation(self.id, violation_msg, line_nr=1)]
 
