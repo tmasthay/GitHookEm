@@ -20,7 +20,6 @@ repos:
 Currently support `GitHookEm` ids are below.
 | id | Description          | See for reference |
 |----|----------------------| -------------- | 
-| commit-msg-directives | Force ALL_CAPS directives at beginning of commit messages, similar to `commitizen`.  | [directives.py](https://github.com/tmasthay/GitHookEm/tree/main/.gitlint_rules) |
 | ban-super-secret | Check for file with `super_secret` as a substring, in case `.gitignore` error occurred. | [ban_souper_secret.py](https://github.com/tmasthay/GitHookEm/blob/main/git_hook_em/pre_commit/ban_souper_secret.py) |
 
 ## Setup pre-commit
@@ -28,10 +27,24 @@ GitHookEm uses `pre-commit`, which is straightforward to setup. Directions are b
 
 ```bash
 pip install pre-commit
-cd path_to_your_repo
+cd repo_root
 pre-commit install
 ```
 Now try `git commit --allow-empty` and see how it works! Email me at tyler@oden.utexas.edu if you need help setting up!
+
+## Setup gitlint
+`GitHookEm` also supports a `gitlint` extension for commit message formating, similar to `commitizen`. To set this up, perform the following steps.
+First, backup or remove your previous commit-msg executable.
+```
+cd repo_root
+mv .git/hooks/commit-msg .git/hooks/commit-msg-backup
+```
+Then put the `gitlint` hidden files in the repository's root directory and then install the hook; this installation creates a file in `.git/hooks/commit-msg`.
+```
+cp git_hook_em_path/.gitlint .
+cp -r git_hook_em_path/.gitlint_rules .
+gitlint install-hook
+```
 
 ## Other suggested hooks
 There are a lot of hooks on GitHub already out there that are easy to plugin once you are setup.
