@@ -15,7 +15,7 @@ repos:
         name: Run gitlint
         entry: gitlint
         language: system
-        stages: [commit-msg]
+        stages: [pre-commit, commit-msg]
         always_run: true
         types: [text]
         pass_filenames: false
