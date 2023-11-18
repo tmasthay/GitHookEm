@@ -8,7 +8,9 @@ GitHookEm is a Python-based tool designed to be a starter kit for making your ow
 
 Its interface just needs the `base` method for the core logic of how to validate.
 To make it more extensible with subclasses, I also have empty implementations of a `pre` and `post` method and a `protocol` function to turn switches on and off for the three validation steps you wish to incorporate into potential subclasses. 
-Nothing else is needed from you; all the interfacing with git to get things working is done through the base class.
+
+Nothing else is needed from you; all the interfacing with git to get things working is done through the base class `GitValidator`.
+
 See the [`gitvalidator.py`](https://github.com/tmasthay/GitHookEm/blob/main/git_hook_em/git_validator.py) file to see how everything works. 
 
 ## GitHookEm is a linear combination of `pre-commit` and `gitlint`
@@ -19,7 +21,7 @@ I use [`pre-commit`](https://pre-commit.com/) and [`gitlint`](https://jorisroove
 The two points above are my motivation for this repo.
 
 If I am mistaken about this or if there is yet another repo out there that provides a base class that works on all stages like `GitValidator`, then please let me know! 
-Using that as a dependency would be a better design decision, given the relative minimalism and immaturity of `GitValidator`.
+Using that as a dependency would be a better design decision, given that said hypothetical class is likely to be more mature than `GitValidator`.
 
 ## Setup YAML files
 To use my hooks, just add the following to your .pre-commit-config.yaml file at `REPO_PATH`
@@ -48,11 +50,10 @@ pip install pre-commit
 cd repo_root
 pre-commit install
 ```
-Now try `git commit --allow-empty` and see how it works! Email me at tyler@oden.utexas.edu if you need help setting up!
-
+Now try `git commit --allow-empty` and see how it works! 
 ## Setup gitlint
-`GitHookEm` also supports a `gitlint` extension for commit message formating, similar to `commitizen`. To set this up, perform the following steps.
-First, backup or remove your previous commit-msg executable.
+`GitHookEm` also supports a `gitlint` extension for commit message formatting, similar to [`commitizen`](https://commitizen-tools.github.io/commitizen/). To set this up, perform the following steps.
+First, backup or remove your previous `commit-msg` executable.
 ```
 cd repo_root
 mv .git/hooks/commit-msg .git/hooks/commit-msg-backup
@@ -69,7 +70,7 @@ There are a lot of hooks on GitHub already out there that are easy to plugin onc
 
 Try to avoid making custom hooks unless you absolutely **need** to; it just saves time and headaches.
 
-See my [.pre-commit-config.yaml file](https://github.com/tmasthay/GitHookEm/blob/main/.pre-commit-config.yaml) for a starter kit. 
+See my [`.pre-commit-config.yaml`](https://github.com/tmasthay/GitHookEm/blob/main/.pre-commit-config.yaml) file for a starter kit. 
 
 Below is a table briefly describing the hooks external to this repo.  
 
