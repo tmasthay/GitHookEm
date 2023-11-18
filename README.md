@@ -18,7 +18,7 @@ I use `pre-commit` and `gitlint` as central dependencies.
 The two points above are my motivation for this repo.
 
 If I am mistaken about this or if there is yet another repo out there that provides a base class that works on all stages like `GitValidator`, then please let me know! 
-Using that as a dependency would be a better design decision, as that class would likely be much more mature than `GitValidator`.
+Using that as a dependency would be a better design decision, given the relative minimalism and immaturity of `GitValidator`.
 
 ## Setup YAML files
 To use my hooks, just add the following to your .pre-commit-config.yaml file at `REPO_PATH`
