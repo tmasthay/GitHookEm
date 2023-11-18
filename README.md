@@ -3,6 +3,15 @@
 
 GitHookEm is a Python-based tool designed to be a starter kit for making your own custom hooks. 
 
+## Making Custom Hooks with GitHookEm
+`GitHookEm` provides a `GitValidator` class that allows for easy extension of custom hooks. 
+Its interface just needs the `validate` method to determine if the git stage should continue to execute or not. 
+See the `gitvalidator.py` file to see how it works. 
+I am considering refactoring this entirely into another framework like `gitlint`.
+From what I understand, `gitlint` is meant for commit-msg parsing though rather than all stages, and I need to read more to verify.
+I also need to check if `pre-commit` has classes similar to `gitlint` as well. 
+If there were something that allows both `gitlint`'s easy extensibility and `pre-commit`'s great YAML management, then I will likely perform the refactor out my `GitValidator` class, and this repo will essentially transform into a tutorial on how to use that package.
+
 ## Setup YAML files
 To use my hooks, just add the following to your .pre-commit-config.yaml file at `REPO_PATH`
 ```bash
@@ -62,5 +71,4 @@ Below is a table briefly describing the hooks external to this repo.
 | isort | Sorts Python imports alphabetically | [isort GitHub](https://github.com/pycqa/isort) |
 | flake8 | Python linter and style guide | [flake8 GitHub](https://github.com/pycqa/flake8) |
 | yamllint | YAML linter | [yamllint GitHub](https://github.com/adrienverge/yamllint.git) |
-
 
