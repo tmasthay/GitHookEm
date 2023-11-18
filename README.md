@@ -5,12 +5,20 @@ GitHookEm is a Python-based tool designed to be a starter kit for making your ow
 
 ## Making Custom Hooks with GitHookEm
 `GitHookEm` provides a `GitValidator` class that allows for easy extension of custom hooks. 
-Its interface just needs the `validate` method to determine if the git stage should continue to execute or not. 
+
+Its interface just needs the `validate` method for the core logic of how to validate.
+Nothing else is needed from you; all the interfacing with git to get things working is done through the base class.
 See the `gitvalidator.py` file to see how it works. 
-I am considering refactoring this entirely into another framework like `gitlint`.
-From what I understand, `gitlint` is meant for commit-msg parsing though rather than all stages, and I need to read more to verify.
-I also need to check if `pre-commit` has classes similar to `gitlint` as well. 
-If there were something that allows both `gitlint`'s easy extensibility and `pre-commit`'s great YAML management, then I will likely perform the refactor out my `GitValidator` class, and this repo will essentially transform into a tutorial on how to use that package.
+
+## GitHookEm is a linear combination of `pre-commit` and `gitlint`
+I use `pre-commit` and `gitlint` as central dependencies. 
+`gitlint` provides a class `CommitRule` similar to `GitValidator`, but it seems to only work on the `commit-msg` level.
+`pre-commit` works on any commit stage, but does not provide a class similar to `GitValidator` or `CommitRule`.
+
+The two points above are my motivation for this repo.
+
+If I am mistaken about this or if there is yet another repo out there that provides a base class that works on all stages like `GitValidator`, then please let me know! 
+Using that as a dependency would be a better design decision, as that class would likely be much more mature than `GitValidator`.
 
 ## Setup YAML files
 To use my hooks, just add the following to your .pre-commit-config.yaml file at `REPO_PATH`
