@@ -1,7 +1,7 @@
 # GitHookEm
-![Git Hook Em Banner](hook_em.jpg)
-
 GitHookEm is a Python-based tool designed to be a starter kit for making your own custom hooks. 
+
+![Git Hook Em Banner](hook_em.jpg)
 
 ## Making Custom Hooks with GitHookEm
 `GitHookEm` provides a `GitValidator` ([example usage here](https://github.com/tmasthay/GitHookEm/blob/main/git_hook_em/pre_commit/ban_souper_secret.py)) class that allows for easy extension of custom hooks. 
