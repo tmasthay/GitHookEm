@@ -4,15 +4,15 @@
 GitHookEm is a Python-based tool designed to be a starter kit for making your own custom hooks. 
 
 ## Making Custom Hooks with GitHookEm
-`GitHookEm` provides a `GitValidator` class that allows for easy extension of custom hooks. 
+`GitHookEm` provides a `GitValidator` ([example usage here](https://github.com/tmasthay/GitHookEm/blob/main/git_hook_em/pre_commit/ban_souper_secret.py)) class that allows for easy extension of custom hooks. 
 
 Its interface just needs the `validate` method for the core logic of how to validate.
 Nothing else is needed from you; all the interfacing with git to get things working is done through the base class.
 See the `gitvalidator.py` file to see how it works. 
 
 ## GitHookEm is a linear combination of `pre-commit` and `gitlint`
-I use `pre-commit` and `gitlint` as central dependencies. 
-`gitlint` provides a class `CommitRule` similar to `GitValidator`, but it seems to only work on the `commit-msg` level.
+I use [`pre-commit`](https://pre-commit.com/) and [`gitlint`](https://jorisroovers.com/gitlint/latest/) as central dependencies. 
+`gitlint` provides a class `CommitRule` ([example usage here](https://github.com/jorisroovers/gitlint/blob/main/examples/my_commit_rules.py)) similar to `GitValidator`, but it seems to only work on the `commit-msg` level.
 `pre-commit` works on any commit stage, but does not provide a class similar to `GitValidator` or `CommitRule`.
 
 The two points above are my motivation for this repo.
