@@ -2,8 +2,6 @@ import re
 from gitlint.rules import CommitRule, RuleViolation
 from dataclasses import dataclass
 
-input('yo')
-
 
 @dataclass
 class Directive:
@@ -106,14 +104,13 @@ class DirectiveCommitRule(CommitRule):
             return [RuleViolation(self.id, violation_msg, line_nr=1)]
 
 
-if __name__ == "__main__":
-    from gitlint.git import GitCommit
+# if __name__ == "__main__":
+#     from gitlint.git import GitCommit
 
-    commit = GitCommit(
-        'REFACTOR_WO: Refactored and it works\n\nDetailed description.'
-    )
-    rule = DirectiveCommitRule()
-    violations = rule.validate(commit)
-    input(violations)
-    for violation in violations:
-        print(violation)
+#     commit = GitCommit(
+#         'REFACTOR_WO: Refactored and it works\n\nDetailed description.'
+#     )
+#     rule = DirectiveCommitRule()
+#     violations = rule.validate(commit)
+#     for violation in violations:
+#         print(violation)
