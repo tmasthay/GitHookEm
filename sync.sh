@@ -41,5 +41,19 @@ for VAL in $VALS_TO_COPY_UP; do
     echo "Copying $VAL"
     cp -r "$VAL" ..
 done
+cd ..
+if [ ! -f .git/hooks/commit-msg-backup ]; then
+    mv .git/hooks/commit-msg .git/hooks/commit-msg-backup
+fi
+gitlint install-hook
 
-cd $(pwd)
+verbose=${1:-false}
+if [ "$verbose" == "-v" ]; then
+    pre-commit clean
+    pre-commit install --verbose
+else
+    pre-commit clean 2> /dev/null 2>&1
+    pre-commit install 2> /dev/null 2>&1
+fi
+
+cd $prev
