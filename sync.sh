@@ -22,8 +22,7 @@ if [ "$last_part" == "GitHookEm" ]; then
     exit 1
 fi
 
-# Perform the submodule update
-git submodule update --init --recursive
+git submodule update --recursive --remote
 
 cd GitHookEm || {
     echo "Error: Unable to find the GitHookEm directory."
@@ -35,11 +34,12 @@ VALS_TO_COPY_UP=$(
     find . -name ".*" | \
     awk -F'/' {'print $2}' | \
     xargs -n1 | \
-    grep -vE "^(.git|.gitignore)$"
+    grep -vE "^(.git|.gitignore|.pre-commit-hooks.yaml)$"
 )
 
 for VAL in $VALS_TO_COPY_UP; do
     echo "Copying $VAL"
     cp -r "$VAL" ..
 done
+
 cd $(pwd)
