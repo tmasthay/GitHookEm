@@ -1,9 +1,9 @@
 ---
-- id: commit-msg-directives
-  name: Commit Message Directive Hook
-  entry: commit-msg-directives
-  language: python
-  stages: [commit-msg]
+# - id: commit-msg-directives
+#   name: Commit Message Directive Hook
+#   entry: commit-msg-directives
+#   language: python
+#   stages: [commit-msg]
 
 - id: ban-super-secret
   name: Ban Super Secret
