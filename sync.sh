@@ -44,6 +44,8 @@ done
 cd ..
 if [ ! -f .git/hooks/commit-msg-backup ]; then
     mv .git/hooks/commit-msg .git/hooks/commit-msg-backup
+else
+    rm .git/hooks/commit-msg
 fi
 gitlint install-hook
 
