@@ -61,7 +61,7 @@ repos:
     rev: 3.9.2
     hooks:
       - id: flake8
-     args: [--extend-ignore=F403, --extend-ignore=F405, --max-line-length=82]
+        args: [--extend-ignore=F403, --extend-ignore=F405, --max-line-length=82]
 
   - repo: https://github.com/adrienverge/yamllint.git
     rev: v1.26.3
