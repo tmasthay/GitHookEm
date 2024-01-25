@@ -1,7 +1,8 @@
-from subprocess import check_output as co
-from abc import ABC, abstractmethod
 import os
 import sys
+from abc import ABC, abstractmethod
+from subprocess import check_output as co
+
 from termcolor import colored
 
 
@@ -74,4 +75,3 @@ class GitValidator(ABC):
             sys.exit(1)
         args, kw = self._parse_sys_argv(argv)
         return args, kw
-
