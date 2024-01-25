@@ -1,5 +1,14 @@
 #!/bin/bash
 
+# sync.sh
+# USAGE: ./sync.sh 
+# This script is used to sync the GitHookEm repository with the top-level
+# directory of a Git repository. It will copy all of the files in the
+# GitHookEm directory to the top-level directory of the Git repository.
+# It will also copy all of the files in the GitHookEm directory to the
+# .git/hooks directory of the Git repository. Finally, it will install
+# the pre-commit hooks for the Git repository.
+
 gsrt(){
     local super=$(git rev-parse --show-superproject-working-tree)
     if [ -z $super ]; then
