@@ -71,6 +71,8 @@ def get_directives():
         'FALLBACK': Directive(
             'Fallback commit -- think as "milestone set for safety"'
         ),
+        'INC': Directive('Incremental change', sub=['MINOR', 'MAJOR']),
+        'INCREMENTAL': Directive('Incremental change', sub=['MINOR', 'MAJOR']),
     }
 
 
