@@ -11,8 +11,8 @@ from termcolor import colored
 def sco(s):
     try:
         return co(s, shell=True).decode("utf-8").strip()
-    except:
-        raise
+    except Exception as e:
+        raise e
 
 
 def cprint(s, color="red", **kw):

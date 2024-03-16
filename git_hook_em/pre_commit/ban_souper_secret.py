@@ -1,8 +1,9 @@
 import os
-import sys
 
-sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
-from git_validator import GitValidator, cprint
+# import sys
+
+# sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
+from git_hook_em.git_validator import GitValidator, cprint
 
 
 class BanSuperSecret(GitValidator):
