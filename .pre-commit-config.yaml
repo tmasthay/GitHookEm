@@ -1,4 +1,3 @@
----
 repos:
   - repo: local
     hooks:
@@ -17,11 +16,8 @@ repos:
         language: system
         stages: [commit-msg]
         always_run: true
-        # types: [text]
         pass_filenames: false
 
-  # Note that you don't need the id hook for commit message verification anymore.
-  #     This is because you have integrated the same logic into the gitlint hook.
   - repo: https://github.com/tmasthay/GitHookEm
     rev: main
     hooks:
@@ -73,4 +69,11 @@ repos:
       - id: yamllint
         args:
           - "--format=auto"
-          - "--config-data={extends: default, rules: {line-length: {max: 120, level: warning}}}"
+          - >
+            --config-data={
+              extends: default,
+              rules: {
+                line-length: {max: 120, level: warning},
+                document-start: {present: false}
+              }
+            }
