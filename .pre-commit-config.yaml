@@ -75,6 +75,6 @@ repos:
               rules: {
                 line-length: {max: 120, level: warning},
                 document-start: {present: false},
-                indentation: {spaces: false, indent-sequences: false},
+                indentation: {spaces: 2, indent-sequences: false},
                 }
               }
