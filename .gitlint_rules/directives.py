@@ -73,6 +73,8 @@ def get_directives():
         ),
         'INC': Directive('Incremental change', sub=['MINOR', 'MAJOR']),
         'INCREMENTAL': Directive('Incremental change', sub=['MINOR', 'MAJOR']),
+        'MINOR': Directive('Minor change'),
+        'MAJOR': Directive('Major change'),
     }
 
 
