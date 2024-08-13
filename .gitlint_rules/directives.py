@@ -42,7 +42,7 @@ def get_directives():
         'REFACTOR': Directive(
             'Refactored code',
             sub=['DOUBT', 'WORKS', 'BREAK', 'CKPT', 'CHECKPOINT'],
-            aliases=['REF', 'RFCTR']
+            aliases=['REF', 'RFCTR'],
         ),
         'TEST': Directive('Test addition/change'),
         'CONFIG': Directive('Config change'),
